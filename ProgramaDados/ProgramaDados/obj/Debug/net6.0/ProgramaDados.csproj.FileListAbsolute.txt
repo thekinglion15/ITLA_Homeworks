@@ -1,0 +1,14 @@
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProgramaDados\ProgramaDados\bin\Debug\net6.0\ProgramaDados.exe
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProgramaDados\ProgramaDados\bin\Debug\net6.0\ProgramaDados.deps.json
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProgramaDados\ProgramaDados\bin\Debug\net6.0\ProgramaDados.runtimeconfig.json
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProgramaDados\ProgramaDados\bin\Debug\net6.0\ProgramaDados.dll
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProgramaDados\ProgramaDados\bin\Debug\net6.0\ProgramaDados.pdb
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProgramaDados\ProgramaDados\obj\Debug\net6.0\ProgramaDados.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProgramaDados\ProgramaDados\obj\Debug\net6.0\ProgramaDados.AssemblyInfoInputs.cache
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProgramaDados\ProgramaDados\obj\Debug\net6.0\ProgramaDados.AssemblyInfo.cs
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProgramaDados\ProgramaDados\obj\Debug\net6.0\ProgramaDados.csproj.CoreCompileInputs.cache
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProgramaDados\ProgramaDados\obj\Debug\net6.0\ProgramaDados.dll
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProgramaDados\ProgramaDados\obj\Debug\net6.0\refint\ProgramaDados.dll
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProgramaDados\ProgramaDados\obj\Debug\net6.0\ProgramaDados.pdb
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProgramaDados\ProgramaDados\obj\Debug\net6.0\ProgramaDados.genruntimeconfig.cache
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProgramaDados\ProgramaDados\obj\Debug\net6.0\ref\ProgramaDados.dll
