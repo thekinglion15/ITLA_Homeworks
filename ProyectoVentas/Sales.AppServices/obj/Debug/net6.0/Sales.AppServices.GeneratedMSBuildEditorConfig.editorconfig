@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Sales.AppServices
-build_property.ProjectDir = C:\Users\The King Lion\Desktop\New folder\ProyectoVentas\Sales.AppServices\
+build_property.ProjectDir = C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas\Sales.AppServices\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
