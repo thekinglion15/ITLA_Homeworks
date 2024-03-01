@@ -1,34 +1,81 @@
-﻿using Sales.Domain.Entities;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Sales.Domain.Entities;
+using Sales.Infraestructure.Context;
 using Sales.Infraestructure.Core;
+using Sales.Infraestructure.Exceptions;
 using Sales.Infraestructure.Interfaces;
 
 namespace Sales.Infraestructure.DAO
 {
-    public class UserDb : IUserDb
+    public class UserDb : DaoBase<User>, IUserDb
     {
-        public bool Exists(string name)
+        private readonly SalesContext context;
+        private readonly ILogger<UserDb> logger;
+        private readonly IConfiguration configuration;
+
+        public UserDb(SalesContext context, ILogger<UserDb> logger, IConfiguration configuration) : base(context)
         {
-            throw new NotImplementedException();
+            this.context = context;
+            this.logger = logger;
+            this.configuration = configuration;
         }
 
-        public List<User> GetAll()
+        public override List<User> GetAll()
         {
-            throw new NotImplementedException();
+            return base.GetEntitiesWithFilters(use => !use.Deleted);
         }
 
-        public User GetById(int userId)
+        public List<User> GetUsersById(int id)
         {
-            throw new NotImplementedException();
+            return this.context.Users.Where(use => use.Id == id).ToList();
         }
 
-        public DataResult Save(User entity)
+        public override DataResult Save(User entity)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+
+            try
+            {
+                if (base.Exists(use => use.Name == entity.Name))
+                    throw new UserException(this.configuration["UserMessage:NameDuplicate"]);
+
+                base.Save(entity);
+                base.Commit();
+            }
+            catch (Exception ex)
+            {
+                result.Message = this.configuration["UserMessage:ErrorSave"];
+                result.Success = false;
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+
+            return result;
         }
 
-        public void Update(User entity)
+        public override DataResult Update(User entity)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+
+            try
+            {
+                User userToUpdate = base.GetById(entity.Id);
+
+                userToUpdate.ModifyDate = entity.ModifyDate;
+                userToUpdate.IdModifyUser = entity.IdModifyUser;
+                userToUpdate.Key = entity.Key;
+
+                base.Update(entity);
+                base.Commit();
+            }
+            catch (Exception ex)
+            {
+                result.Message = this.configuration["UserMessage:ErrorSave"];
+                result.Success = false;
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+
+            return base.Update(entity);
         }
     }
 }

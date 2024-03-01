@@ -1,34 +1,87 @@
-﻿using Sales.Domain.Entities;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Sales.Domain.Entities;
+using Sales.Infraestructure.Context;
 using Sales.Infraestructure.Core;
+using Sales.Infraestructure.Exceptions;
 using Sales.Infraestructure.Interfaces;
 
 namespace Sales.Infraestructure.DAO
 {
-    public class SaleDb : ISaleDb
+    public class SaleDb : DaoBase<Sale>, ISaleDb
     {
-        public bool Exists(string name)
+        private readonly SalesContext context;
+        private readonly ILogger<SaleDb> logger;
+        private readonly IConfiguration configuration;
+
+        public SaleDb(SalesContext context, ILogger<SaleDb> logger, IConfiguration configuration) : base(context)
         {
-            throw new NotImplementedException();
+            this.context = context;
+            this.logger = logger;
+            this.configuration = configuration;
         }
 
-        public List<Sale> GetAll()
+        public override List<Sale> GetAll()
         {
-            throw new NotImplementedException();
+            return base.GetEntitiesWithFilters(sal => !sal.Deleted);
         }
 
-        public Sale GetById(int saleId)
+        public List<Sale> GetSalesById(int id)
         {
-            throw new NotImplementedException();
+            return this.context.Sales.Where(sal => sal.Id == id).ToList();
         }
 
-        public DataResult Save(Sale entity)
+        public override DataResult Save(Sale entity)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+
+            try
+            {
+                if (base.Exists(sal => sal.Name == entity.Name))
+                    throw new SaleException(this.configuration["SaleMessage:NameDuplicate"]);
+
+                base.Save(entity);
+                base.Commit();
+            }
+            catch (Exception ex)
+            {
+                result.Message = this.configuration["SaleMessage:ErrorSave"];
+                result.Success = false;
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+
+            return result;
         }
 
-        public void Update(Sale entity)
+        public override DataResult Update(Sale entity)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+
+            try
+            {
+                Sale saleToUpdate = base.GetById(entity.Id);
+
+                saleToUpdate.ModifyDate = entity.ModifyDate;
+                saleToUpdate.IdModifyUser = entity.IdModifyUser;
+                saleToUpdate.SaleNumber = entity.SaleNumber;
+                saleToUpdate.IdTypeDocSale = entity.IdTypeDocSale;
+                saleToUpdate.IdUser = entity.IdUser;
+                saleToUpdate.ClientDoc = entity.ClientDoc;
+                saleToUpdate.NameClient = entity.NameClient;
+                saleToUpdate.Subtotal = entity.Subtotal;
+                saleToUpdate.TaxTotal = entity.TaxTotal;
+
+                base.Update(entity);
+                base.Commit();
+            }
+            catch (Exception ex)
+            {
+                result.Message = this.configuration["SaleMessage:ErrorSave"];
+                result.Success = false;
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+
+            return base.Update(entity);
         }
     }
 }

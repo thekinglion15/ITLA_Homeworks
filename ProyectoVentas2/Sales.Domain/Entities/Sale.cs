@@ -1,6 +1,8 @@
-﻿namespace Sales.Domain.Entities
+﻿using Sales.Domain.Core;
+
+namespace Sales.Domain.Entities
 {
-    public class Sale : Core.BaseEntity
+    public class Sale : BaseEntity
     {
         public string? SaleNumber { get; set; }
         public int? IdTypeDocSale { get; set; }

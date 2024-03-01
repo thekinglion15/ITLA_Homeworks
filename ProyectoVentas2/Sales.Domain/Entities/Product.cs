@@ -1,6 +1,8 @@
-﻿namespace Sales.Domain.Entities
+﻿using Sales.Domain.Core;
+
+namespace Sales.Domain.Entities
 {
-    public class Product : Core.BaseEntity
+    public class Product : BaseEntity
     {
         public string? BarCode { get; set; }
         public string? Brand { get; set; }

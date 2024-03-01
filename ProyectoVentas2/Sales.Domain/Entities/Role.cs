@@ -1,6 +1,8 @@
-﻿namespace Sales.Domain.Entities
+﻿using Sales.Domain.Core;
+
+namespace Sales.Domain.Entities
 {
-    public class Role : Core.BaseEntity
+    public class Role : BaseEntity
     {
     }
 }

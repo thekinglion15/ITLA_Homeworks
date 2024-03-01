@@ -1,34 +1,85 @@
-﻿using Sales.Domain.Entities;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Sales.Domain.Entities;
+using Sales.Infraestructure.Context;
 using Sales.Infraestructure.Core;
+using Sales.Infraestructure.Exceptions;
 using Sales.Infraestructure.Interfaces;
 
 namespace Sales.Infraestructure.DAO
 {
-    public class SaleDetailDb : ISaleDetailDb
+    public class SaleDetailDb : DaoBase<SaleDetail>, ISaleDetailDb
     {
-        public bool Exists(string name)
+        private readonly SalesContext context;
+        private readonly ILogger<SaleDetailDb> logger;
+        private readonly IConfiguration configuration;
+
+        public SaleDetailDb(SalesContext context, ILogger<SaleDetailDb> logger, IConfiguration configuration) : base(context)
         {
-            throw new NotImplementedException();
+            this.context = context;
+            this.logger = logger;
+            this.configuration = configuration;
         }
 
-        public List<SaleDetail> GetAll()
+        public override List<SaleDetail> GetAll()
         {
-            throw new NotImplementedException();
+            return base.GetEntitiesWithFilters(bus => !bus.Deleted);
         }
 
-        public SaleDetail GetById(int saleDetailId)
+        public List<SaleDetail> GetSaleDetailsById(int id)
         {
-            throw new NotImplementedException();
+            return this.context.SaleDetails.Where(sal => sal.Id == id).ToList();
         }
 
-        public DataResult Save(SaleDetail entity)
+        public override DataResult Save(SaleDetail entity)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+
+            try
+            {
+                if (base.Exists(bus => bus.Name == entity.Name))
+                    throw new SaleDetailException(this.configuration["SaleDetailMessage:NameDuplicate"]);
+
+                base.Save(entity);
+                base.Commit();
+            }
+            catch (Exception ex)
+            {
+                result.Message = this.configuration["SaleDetailMessage:ErrorSave"];
+                result.Success = false;
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+
+            return result;
         }
 
-        public void Update(SaleDetail entity)
+        public override DataResult Update(SaleDetail entity)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+
+            try
+            {
+                SaleDetail saleDetailToUpdate = base.GetById(entity.Id);
+
+                saleDetailToUpdate.ModifyDate = entity.ModifyDate;
+                saleDetailToUpdate.IdModifyUser = entity.IdModifyUser;
+                saleDetailToUpdate.IdSale = entity.IdSale;
+                saleDetailToUpdate.IdProduct = entity.IdProduct;
+                saleDetailToUpdate.BrandProduct = entity.BrandProduct;
+                saleDetailToUpdate.ProductCategory = entity.ProductCategory;
+                saleDetailToUpdate.Quantity = entity.Quantity;
+
+                base.Update(entity);
+                base.Commit();
+            }
+            catch (Exception ex)
+            {
+                result.Message = this.configuration["SaleDetailMessage:ErrorSave"];
+                result.Success = false;
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+
+            return base.Update(entity);
         }
     }
 }

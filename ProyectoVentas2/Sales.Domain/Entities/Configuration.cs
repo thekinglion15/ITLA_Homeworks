@@ -1,6 +1,8 @@
-﻿namespace Sales.Domain.Entities
+﻿using Sales.Domain.Core;
+
+namespace Sales.Domain.Entities
 {
-    public class Configuration : Core.BaseEntity
+    public class Configuration : BaseEntity
     {
         public string? Resource { get; set; }
         public string? Property { get; set; }

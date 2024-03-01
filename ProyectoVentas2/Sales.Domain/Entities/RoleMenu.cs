@@ -1,6 +1,8 @@
-﻿namespace Sales.Domain.Entities
+﻿using Sales.Domain.Core;
+
+namespace Sales.Domain.Entities
 {
-    public class RoleMenu : Core.BaseEntity
+    public class RoleMenu : BaseEntity
     {
         public int? IdMenu { get; set; }
     }

@@ -1,34 +1,84 @@
-﻿using Sales.Domain.Entities;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Sales.Domain.Entities;
+using Sales.Infraestructure.Context;
 using Sales.Infraestructure.Core;
+using Sales.Infraestructure.Exceptions;
 using Sales.Infraestructure.Interfaces;
 
 namespace Sales.Infraestructure.DAO
 {
-    public class MenuDb : IMenuDb
+    public class MenuDb : DaoBase<Menu>, IMenuDb
     {
-        public bool Exists(string name)
+        private readonly SalesContext context;
+        private readonly ILogger<MenuDb> logger;
+        private readonly IConfiguration configuration;
+
+        public MenuDb(SalesContext context, ILogger<MenuDb> logger, IConfiguration configuration) : base(context)
         {
-            throw new NotImplementedException();
+            this.context = context;
+            this.logger = logger;
+            this.configuration = configuration;
         }
 
-        public List<Menu> GetAll()
+        public override List<Menu> GetAll()
         {
-            throw new NotImplementedException();
+            return base.GetEntitiesWithFilters(men => !men.Deleted);
         }
 
-        public Menu GetById(int menuId)
+        public List<Menu> GetMenusById(int id)
         {
-            throw new NotImplementedException();
+            return this.context.Menus.Where(men => men.Id == id).ToList();
         }
 
-        public DataResult Save(Menu entity)
+        public override DataResult Save(Menu entity)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+
+            try
+            {
+                if (base.Exists(men => men.Name == entity.Name))
+                    throw new MenuException(this.configuration["MenuMessage:NameDuplicate"]);
+
+                base.Save(entity);
+                base.Commit();
+            }
+            catch (Exception ex)
+            {
+                result.Message = this.configuration["MenuMessage:ErrorSave"];
+                result.Success = false;
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+
+            return result;
         }
 
-        public void Update(Menu entity)
+        public override DataResult Update(Menu entity)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+
+            try
+            {
+                Menu menuToUpdate = base.GetById(entity.Id);
+
+                menuToUpdate.ModifyDate = entity.ModifyDate;
+                menuToUpdate.IdModifyUser = entity.IdModifyUser;
+                menuToUpdate.IdMenuFather = entity.IdMenuFather;
+                menuToUpdate.Icon = entity.Icon;
+                menuToUpdate.Driver = entity.Driver;
+                menuToUpdate.ActionPage = entity.ActionPage;
+
+                base.Update(entity);
+                base.Commit();
+            }
+            catch (Exception ex)
+            {
+                result.Message = this.configuration["MenuMessage:ErrorSave"];
+                result.Success = false;
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+
+            return base.Update(entity);
         }
     }
 }

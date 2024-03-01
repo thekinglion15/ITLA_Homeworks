@@ -1,6 +1,8 @@
-﻿namespace Sales.Domain.Entities
+﻿using Sales.Domain.Core;
+
+namespace Sales.Domain.Entities
 {
-    public class User : Core.BaseEntity
+    public class User : BaseEntity
     {
         public string? Key { get; set; }
     }

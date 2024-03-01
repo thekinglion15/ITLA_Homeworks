@@ -87,6 +87,7 @@
       <DependentUpon>SalesModel.edmx</DependentUpon>
       <LastGenOutput>SalesModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="SalesModel.edmx.sql" />
     <Content Include="SalesModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SalesModel.edmx</DependentUpon>

@@ -1,34 +1,81 @@
-﻿using Sales.Domain.Entities;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Sales.Domain.Entities;
+using Sales.Infraestructure.Context;
 using Sales.Infraestructure.Core;
+using Sales.Infraestructure.Exceptions;
 using Sales.Infraestructure.Interfaces;
 
 namespace Sales.Infraestructure.DAO
 {
-    public class RoleMenuDb : IRoleMenuDb
+    public class RoleMenuDb : DaoBase<RoleMenu>, IRoleMenuDb
     {
-        public bool Exists(string name)
+        private readonly SalesContext context;
+        private readonly ILogger<RoleMenuDb> logger;
+        private readonly IConfiguration configuration;
+
+        public RoleMenuDb(SalesContext context, ILogger<RoleMenuDb> logger, IConfiguration configuration) : base(context)
         {
-            throw new NotImplementedException();
+            this.context = context;
+            this.logger = logger;
+            this.configuration = configuration;
         }
 
-        public List<RoleMenu> GetAll()
+        public override List<RoleMenu> GetAll()
         {
-            throw new NotImplementedException();
+            return base.GetEntitiesWithFilters(rol => !rol.Deleted);
         }
 
-        public RoleMenu GetById(int roleMenuId)
+        public List<RoleMenu> GetRoleMenusById(int id)
         {
-            throw new NotImplementedException();
+            return this.context.RoleMenus.Where(rol => rol.Id == id).ToList();
         }
 
-        public DataResult Save(RoleMenu entity)
+        public override DataResult Save(RoleMenu entity)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+
+            try
+            {
+                if (base.Exists(rol => rol.Name == entity.Name))
+                    throw new RoleMenuException(this.configuration["RoleMenuMessage:NameDuplicate"]);
+
+                base.Save(entity);
+                base.Commit();
+            }
+            catch (Exception ex)
+            {
+                result.Message = this.configuration["RoleMenuMessage:ErrorSave"];
+                result.Success = false;
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+
+            return result;
         }
 
-        public void Update(RoleMenu entity)
+        public override DataResult Update(RoleMenu entity)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+
+            try
+            {
+                RoleMenu roleMenuToUpdate = base.GetById(entity.Id);
+
+                roleMenuToUpdate.ModifyDate = entity.ModifyDate;
+                roleMenuToUpdate.IdModifyUser = entity.IdModifyUser;
+                roleMenuToUpdate.IdMenu = entity.IdMenu;
+
+                base.Update(entity);
+                base.Commit();
+            }
+            catch (Exception ex)
+            {
+                result.Message = this.configuration["RoleMenuMessage:ErrorSave"];
+                result.Success = false;
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+
+            return base.Update(entity);
         }
     }
 }

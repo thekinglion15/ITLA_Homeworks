@@ -1,6 +1,8 @@
-﻿namespace Sales.Domain.Entities
+﻿using Sales.Domain.Core;
+
+namespace Sales.Domain.Entities
 {
-    public class SaleDetail : Core.BaseEntity
+    public class SaleDetail : BaseEntity
     {
         public int? IdSale { get; set; }
         public int? IdProduct { get; set; }

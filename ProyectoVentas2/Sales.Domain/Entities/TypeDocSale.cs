@@ -1,6 +1,8 @@
-﻿namespace Sales.Domain.Entities
+﻿using Sales.Domain.Core;
+
+namespace Sales.Domain.Entities
 {
-    public class TypeDocSale : Core.BaseEntity
+    public class TypeDocSale : BaseEntity
     {
     }
 }

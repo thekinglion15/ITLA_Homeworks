@@ -1,6 +1,8 @@
-﻿namespace Sales.Domain.Entities
+﻿using Sales.Domain.Core;
+
+namespace Sales.Domain.Entities
 {
-    public class Menu : Core.BaseEntity
+    public class Menu : BaseEntity
     {
         public int? IdMenuFather { get; set; }
         public string? Icon { get; set; }

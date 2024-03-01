@@ -1,34 +1,80 @@
-﻿using Sales.Domain.Entities;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Sales.Domain.Entities;
+using Sales.Infraestructure.Context;
 using Sales.Infraestructure.Core;
+using Sales.Infraestructure.Exceptions;
 using Sales.Infraestructure.Interfaces;
 
 namespace Sales.Infraestructure.DAO
 {
-    public class TypeDocSaleDb : ITypeDocSaleDb
+    public class TypeDocSaleDb : DaoBase<TypeDocSale>, ITypeDocSaleDb
     {
-        public bool Exists(string name)
+        private readonly SalesContext context;
+        private readonly ILogger<TypeDocSaleDb> logger;
+        private readonly IConfiguration configuration;
+
+        public TypeDocSaleDb(SalesContext context, ILogger<TypeDocSaleDb> logger, IConfiguration configuration) : base(context)
         {
-            throw new NotImplementedException();
+            this.context = context;
+            this.logger = logger;
+            this.configuration = configuration;
         }
 
-        public List<TypeDocSale> GetAll()
+        public override List<TypeDocSale> GetAll()
         {
-            throw new NotImplementedException();
+            return base.GetEntitiesWithFilters(typ => !typ.Deleted);
         }
 
-        public TypeDocSale GetById(int typeDocSaleId)
+        public List<TypeDocSale> GetTypeDocSalesById(int id)
         {
-            throw new NotImplementedException();
+            return this.context.TypeDocSales.Where(typ => typ.Id == id).ToList();
         }
 
-        public DataResult Save(TypeDocSale entity)
+        public override DataResult Save(TypeDocSale entity)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+
+            try
+            {
+                if (base.Exists(typ => typ.Name == entity.Name))
+                    throw new TypeDocSaleException(this.configuration["TypeDocSaleMessage:NameDuplicate"]);
+
+                base.Save(entity);
+                base.Commit();
+            }
+            catch (Exception ex)
+            {
+                result.Message = this.configuration["TypeDocSaleMessage:ErrorSave"];
+                result.Success = false;
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+
+            return result;
         }
 
-        public void Update(TypeDocSale entity)
+        public override DataResult Update(TypeDocSale entity)
         {
-            throw new NotImplementedException();
+            DataResult result = new DataResult();
+
+            try
+            {
+                TypeDocSale typeDocSaleToUpdate = base.GetById(entity.Id);
+
+                typeDocSaleToUpdate.ModifyDate = entity.ModifyDate;
+                typeDocSaleToUpdate.IdModifyUser = entity.IdModifyUser;
+
+                base.Update(entity);
+                base.Commit();
+            }
+            catch (Exception ex)
+            {
+                result.Message = this.configuration["TypeDocSaleMessage:ErrorSave"];
+                result.Success = false;
+                this.logger.LogError(result.Message, ex.ToString());
+            }
+
+            return base.Update(entity);
         }
     }
 }
