@@ -1,0 +1,12 @@
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Domain\bin\Debug\net6.0\Sales.Domain.deps.json
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Domain\bin\Debug\net6.0\Sales.Domain.dll
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Domain\bin\Debug\net6.0\Sales.Domain.pdb
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Domain\obj\Debug\net6.0\Sales.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Domain\obj\Debug\net6.0\Sales.Domain.AssemblyInfoInputs.cache
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Domain\obj\Debug\net6.0\Sales.Domain.AssemblyInfo.cs
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Domain\obj\Debug\net6.0\Sales.Domain.csproj.CoreCompileInputs.cache
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Domain\obj\Debug\net6.0\Sales.Domain.sourcelink.json
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Domain\obj\Debug\net6.0\Sales.Domain.dll
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Domain\obj\Debug\net6.0\refint\Sales.Domain.dll
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Domain\obj\Debug\net6.0\Sales.Domain.pdb
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Domain\obj\Debug\net6.0\ref\Sales.Domain.dll

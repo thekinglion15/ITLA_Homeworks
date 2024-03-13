@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b06aad6c42694acdbbf6598835879018" Name="Diagram1">
+        <EntityTypeShape EntityType="SalesModel.Categoria" Width="1.5" PointX="5.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesModel.Configuracion" Width="1.5" PointX="9.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesModel.DetalleVenta" Width="1.5" PointX="7.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesModel.Menu" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesModel.Negocio" Width="1.5" PointX="9.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesModel.NumeroCorrelativo" Width="1.5" PointX="10.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesModel.Producto" Width="1.5" PointX="8" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesModel.Rol" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesModel.RolMenu" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesModel.TipoDocumentoVenta" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesModel.Usuario" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalesModel.Venta" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="SalesModel.FK__Producto__IdCate__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesModel.FK__DetalleVe__IdVen__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesModel.FK__Menu__IdMenuPadr__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesModel.FK__RolMenu__IdMenu__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesModel.FK__RolMenu__IdRol__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesModel.FK__Usuario__IdRol__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesModel.FK__Venta__IdTipoDoc__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="SalesModel.FK__Venta__IdUsuario__75A278F5" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,6 @@
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.IOC\obj\Debug\net6.0\Sales.IOC.csproj.AssemblyReference.cache
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.IOC\obj\Debug\net6.0\Sales.IOC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.IOC\obj\Debug\net6.0\Sales.IOC.AssemblyInfoInputs.cache
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.IOC\obj\Debug\net6.0\Sales.IOC.AssemblyInfo.cs
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.IOC\obj\Debug\net6.0\Sales.IOC.csproj.CoreCompileInputs.cache
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.IOC\obj\Debug\net6.0\Sales.IOC.sourcelink.json

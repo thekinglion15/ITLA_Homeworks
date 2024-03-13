@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SalesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EsActivo" Type="Boolean" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+    <Property Name="FechaMod" Type="DateTime" Precision="3" />
+    <Property Name="IdUsuarioMod" Type="Int32" />
+    <Property Name="IdUsuarioElimino" Type="Int32" />
+    <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Productoes" Relationship="Self.FK__Producto__IdCate__70DDC3D8" FromRole="Categoria" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Configuracion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Recurso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Propiedad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Valor" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DetalleVenta">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdVenta" Type="Int32" />
+    <Property Name="IdProducto" Type="Int32" />
+    <Property Name="MarcaProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DescripcionProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CategoriaProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Total" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="Venta" Relationship="Self.FK__DetalleVe__IdVen__6EF57B66" FromRole="DetalleVenta" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IdMenuPadre" Type="Int32" />
+    <Property Name="Icono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Controlador" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PaginaAccion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="EsActivo" Type="Boolean" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+    <Property Name="FechaMod" Type="DateTime" Precision="3" />
+    <Property Name="IdUsuarioMod" Type="Int32" />
+    <Property Name="IdUsuarioElimino" Type="Int32" />
+    <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Menu1" Relationship="Self.FK__Menu__IdMenuPadr__6FE99F9F" FromRole="Menu" ToRole="Menu1" />
+    <NavigationProperty Name="Menu2" Relationship="Self.FK__Menu__IdMenuPadr__6FE99F9F" FromRole="Menu1" ToRole="Menu" />
+    <NavigationProperty Name="RolMenus" Relationship="Self.FK__RolMenu__IdMenu__71D1E811" FromRole="Menu" ToRole="RolMenu" />
+  </EntityType>
+  <EntityType Name="Negocio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UrlLogo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NombreLogo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PorcentajeImpuesto" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="SimboloMoneda" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+    <Property Name="FechaMod" Type="DateTime" Precision="3" />
+    <Property Name="IdUsuarioMod" Type="Int32" />
+    <Property Name="IdUsuarioElimino" Type="Int32" />
+    <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NumeroCorrelativo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UltimoNumero" Type="Int32" />
+    <Property Name="CantidadDigitos" Type="Int32" />
+    <Property Name="Gestion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoBarra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IdCategoria" Type="Int32" />
+    <Property Name="Stock" Type="Int32" />
+    <Property Name="UrlImagen" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NombreImagen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="EsActivo" Type="Boolean" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+    <Property Name="FechaMod" Type="DateTime" Precision="3" />
+    <Property Name="IdUsuarioMod" Type="Int32" />
+    <Property Name="IdUsuarioElimino" Type="Int32" />
+    <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Categoria" Relationship="Self.FK__Producto__IdCate__70DDC3D8" FromRole="Producto" ToRole="Categoria" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="EsActivo" Type="Boolean" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+    <Property Name="FechaMod" Type="DateTime" Precision="3" />
+    <Property Name="IdUsuarioMod" Type="Int32" />
+    <Property Name="IdUsuarioElimino" Type="Int32" />
+    <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="RolMenus" Relationship="Self.FK__RolMenu__IdRol__72C60C4A" FromRole="Rol" ToRole="RolMenu" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuario__IdRol__73BA3083" FromRole="Rol" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="RolMenu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdRol" Type="Int32" />
+    <Property Name="IdMenu" Type="Int32" />
+    <Property Name="EsActivo" Type="Boolean" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+    <Property Name="FechaMod" Type="DateTime" Precision="3" />
+    <Property Name="IdUsuarioMod" Type="Int32" />
+    <Property Name="IdUsuarioElimino" Type="Int32" />
+    <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Menu" Relationship="Self.FK__RolMenu__IdMenu__71D1E811" FromRole="RolMenu" ToRole="Menu" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK__RolMenu__IdRol__72C60C4A" FromRole="RolMenu" ToRole="Rol" />
+  </EntityType>
+  <EntityType Name="TipoDocumentoVenta">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EsActivo" Type="Boolean" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+    <Property Name="FechaMod" Type="DateTime" Precision="3" />
+    <Property Name="IdUsuarioMod" Type="Int32" />
+    <Property Name="IdUsuarioElimino" Type="Int32" />
+    <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Ventas" Relationship="Self.FK__Venta__IdTipoDoc__74AE54BC" FromRole="TipoDocumentoVenta" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdRol" Type="Int32" />
+    <Property Name="UrlFoto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NombreFoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Clave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EsActivo" Type="Boolean" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+    <Property Name="FechaMod" Type="DateTime" Precision="3" />
+    <Property Name="IdUsuarioMod" Type="Int32" />
+    <Property Name="IdUsuarioElimino" Type="Int32" />
+    <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+    <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK__Usuario__IdRol__73BA3083" FromRole="Usuario" ToRole="Rol" />
+    <NavigationProperty Name="Ventas" Relationship="Self.FK__Venta__IdUsuario__75A278F5" FromRole="Usuario" ToRole="Venta" />
+  </EntityType>
+  <EntityType Name="Venta">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumeroVenta" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="IdTipoDocumentoVenta" Type="Int32" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="CocumentoCliente" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NombreCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SubTotal" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="ImpuestoTotal" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Total" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetalleVentas" Relationship="Self.FK__DetalleVe__IdVen__6EF57B66" FromRole="Venta" ToRole="DetalleVenta" />
+    <NavigationProperty Name="TipoDocumentoVenta" Relationship="Self.FK__Venta__IdTipoDoc__74AE54BC" FromRole="Venta" ToRole="TipoDocumentoVenta" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Venta__IdUsuario__75A278F5" FromRole="Venta" ToRole="Usuario" />
+  </EntityType>
+  <Association Name="FK__Producto__IdCate__70DDC3D8">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleVe__IdVen__6EF57B66">
+    <End Role="Venta" Type="Self.Venta" Multiplicity="0..1" />
+    <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venta">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="IdVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Menu__IdMenuPadr__6FE99F9F">
+    <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+    <End Role="Menu1" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Menu1">
+        <PropertyRef Name="IdMenuPadre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RolMenu__IdMenu__71D1E811">
+    <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+    <End Role="RolMenu" Type="Self.RolMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolMenu">
+        <PropertyRef Name="IdMenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RolMenu__IdRol__72C60C4A">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="RolMenu" Type="Self.RolMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolMenu">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__IdRol__73BA3083">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Venta__IdTipoDoc__74AE54BC">
+    <End Role="TipoDocumentoVenta" Type="Self.TipoDocumentoVenta" Multiplicity="0..1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoDocumentoVenta">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="IdTipoDocumentoVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Venta__IdUsuario__75A278F5">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SalesModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+    <EntitySet Name="Configuracions" EntityType="Self.Configuracion" />
+    <EntitySet Name="DetalleVentas" EntityType="Self.DetalleVenta" />
+    <EntitySet Name="Menus" EntityType="Self.Menu" />
+    <EntitySet Name="Negocios" EntityType="Self.Negocio" />
+    <EntitySet Name="NumeroCorrelativoes" EntityType="Self.NumeroCorrelativo" />
+    <EntitySet Name="Productoes" EntityType="Self.Producto" />
+    <EntitySet Name="Rols" EntityType="Self.Rol" />
+    <EntitySet Name="RolMenus" EntityType="Self.RolMenu" />
+    <EntitySet Name="TipoDocumentoVentas" EntityType="Self.TipoDocumentoVenta" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+    <EntitySet Name="Ventas" EntityType="Self.Venta" />
+    <AssociationSet Name="FK__Producto__IdCate__70DDC3D8" Association="Self.FK__Producto__IdCate__70DDC3D8">
+      <End Role="Categoria" EntitySet="Categorias" />
+      <End Role="Producto" EntitySet="Productoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleVe__IdVen__6EF57B66" Association="Self.FK__DetalleVe__IdVen__6EF57B66">
+      <End Role="Venta" EntitySet="Ventas" />
+      <End Role="DetalleVenta" EntitySet="DetalleVentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Menu__IdMenuPadr__6FE99F9F" Association="Self.FK__Menu__IdMenuPadr__6FE99F9F">
+      <End Role="Menu" EntitySet="Menus" />
+      <End Role="Menu1" EntitySet="Menus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RolMenu__IdMenu__71D1E811" Association="Self.FK__RolMenu__IdMenu__71D1E811">
+      <End Role="Menu" EntitySet="Menus" />
+      <End Role="RolMenu" EntitySet="RolMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RolMenu__IdRol__72C60C4A" Association="Self.FK__RolMenu__IdRol__72C60C4A">
+      <End Role="Rol" EntitySet="Rols" />
+      <End Role="RolMenu" EntitySet="RolMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__IdRol__73BA3083" Association="Self.FK__Usuario__IdRol__73BA3083">
+      <End Role="Rol" EntitySet="Rols" />
+      <End Role="Usuario" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Venta__IdTipoDoc__74AE54BC" Association="Self.FK__Venta__IdTipoDoc__74AE54BC">
+      <End Role="TipoDocumentoVenta" EntitySet="TipoDocumentoVentas" />
+      <End Role="Venta" EntitySet="Ventas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Venta__IdUsuario__75A278F5" Association="Self.FK__Venta__IdUsuario__75A278F5">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Venta" EntitySet="Ventas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,7 @@
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Api\obj\Debug\net6.0\Sales.Api.csproj.AssemblyReference.cache
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Api\obj\Debug\net6.0\Sales.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Api\obj\Debug\net6.0\Sales.Api.AssemblyInfoInputs.cache
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Api\obj\Debug\net6.0\Sales.Api.AssemblyInfo.cs
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Api\obj\Debug\net6.0\Sales.Api.csproj.CoreCompileInputs.cache
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Api\obj\Debug\net6.0\Sales.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\The King Lion\OneDrive\University\ITLA\C# .NET Intermedio\Homeworks\Programas\ProyectoVentas3\Sales.Api\obj\Debug\net6.0\Sales.Api.sourcelink.json
