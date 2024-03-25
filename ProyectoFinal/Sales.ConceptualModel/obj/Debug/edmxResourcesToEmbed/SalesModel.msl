@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SalesModelStoreContainer" CdmEntityContainer="SalesModelContainer">
+    <EntitySetMapping Name="Categorias">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Categoria)">
+        <MappingFragment StoreEntitySet="Categorias">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Configuracions">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Configuracion)">
+        <MappingFragment StoreEntitySet="Configuracions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Recurso" ColumnName="Recurso" />
+          <ScalarProperty Name="Propiedad" ColumnName="Propiedad" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleVentas">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.DetalleVenta)">
+        <MappingFragment StoreEntitySet="DetalleVentas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="MarcaProducto" ColumnName="MarcaProducto" />
+          <ScalarProperty Name="DescripcionProducto" ColumnName="DescripcionProducto" />
+          <ScalarProperty Name="CategoriaProducto" ColumnName="CategoriaProducto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Menu)">
+        <MappingFragment StoreEntitySet="Menus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdMenuPadre" ColumnName="IdMenuPadre" />
+          <ScalarProperty Name="Icono" ColumnName="Icono" />
+          <ScalarProperty Name="Controlador" ColumnName="Controlador" />
+          <ScalarProperty Name="PaginaAccion" ColumnName="PaginaAccion" />
+          <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Negocios">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Negocio)">
+        <MappingFragment StoreEntitySet="Negocios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UrlLogo" ColumnName="UrlLogo" />
+          <ScalarProperty Name="NombreLogo" ColumnName="NombreLogo" />
+          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="PorcentajeImpuesto" ColumnName="PorcentajeImpuesto" />
+          <ScalarProperty Name="SimboloMoneda" ColumnName="SimboloMoneda" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NumeroCorrelativoes">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.NumeroCorrelativo)">
+        <MappingFragment StoreEntitySet="NumeroCorrelativoes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UltimoNumero" ColumnName="UltimoNumero" />
+          <ScalarProperty Name="CantidadDigitos" ColumnName="CantidadDigitos" />
+          <ScalarProperty Name="Gestion" ColumnName="Gestion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productoes">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Producto)">
+        <MappingFragment StoreEntitySet="Productoes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="UrlImagen" ColumnName="UrlImagen" />
+          <ScalarProperty Name="NombreImagen" ColumnName="NombreImagen" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rols">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Rol)">
+        <MappingFragment StoreEntitySet="Rols">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolMenus">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.RolMenu)">
+        <MappingFragment StoreEntitySet="RolMenus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+          <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoDocumentoVentas">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.TipoDocumentoVenta)">
+        <MappingFragment StoreEntitySet="TipoDocumentoVentas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Usuario)">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="UrlFoto" ColumnName="UrlFoto" />
+          <ScalarProperty Name="NombreFoto" ColumnName="NombreFoto" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ventas">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Venta)">
+        <MappingFragment StoreEntitySet="Ventas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NumeroVenta" ColumnName="NumeroVenta" />
+          <ScalarProperty Name="IdTipoDocumentoVenta" ColumnName="IdTipoDocumentoVenta" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="CocumentoCliente" ColumnName="CocumentoCliente" />
+          <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="ImpuestoTotal" ColumnName="ImpuestoTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

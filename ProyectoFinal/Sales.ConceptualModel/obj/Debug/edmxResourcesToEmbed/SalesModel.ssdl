@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SalesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SalesModelStoreContainer">
+    <EntitySet Name="Categorias" EntityType="SalesModel.Store.Categorias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Configuracions" EntityType="SalesModel.Store.Configuracions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleVentas" EntityType="SalesModel.Store.DetalleVentas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Menus" EntityType="SalesModel.Store.Menus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Negocios" EntityType="SalesModel.Store.Negocios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NumeroCorrelativoes" EntityType="SalesModel.Store.NumeroCorrelativoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Productoes" EntityType="SalesModel.Store.Productoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Rols" EntityType="SalesModel.Store.Rols" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RolMenus" EntityType="SalesModel.Store.RolMenus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoDocumentoVentas" EntityType="SalesModel.Store.TipoDocumentoVentas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuarios" EntityType="SalesModel.Store.Usuarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ventas" EntityType="SalesModel.Store.Ventas" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__Producto__IdCate__70DDC3D8" Association="SalesModel.Store.FK__Producto__IdCate__70DDC3D8">
+      <End Role="Categoria" EntitySet="Categorias" />
+      <End Role="Producto" EntitySet="Productoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleVe__IdVen__6EF57B66" Association="SalesModel.Store.FK__DetalleVe__IdVen__6EF57B66">
+      <End Role="Venta" EntitySet="Ventas" />
+      <End Role="DetalleVenta" EntitySet="DetalleVentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Menu__IdMenuPadr__6FE99F9F" Association="SalesModel.Store.FK__Menu__IdMenuPadr__6FE99F9F">
+      <End Role="Menu" EntitySet="Menus" />
+      <End Role="Menu1" EntitySet="Menus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RolMenu__IdMenu__71D1E811" Association="SalesModel.Store.FK__RolMenu__IdMenu__71D1E811">
+      <End Role="Menu" EntitySet="Menus" />
+      <End Role="RolMenu" EntitySet="RolMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RolMenu__IdRol__72C60C4A" Association="SalesModel.Store.FK__RolMenu__IdRol__72C60C4A">
+      <End Role="Rol" EntitySet="Rols" />
+      <End Role="RolMenu" EntitySet="RolMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__IdRol__73BA3083" Association="SalesModel.Store.FK__Usuario__IdRol__73BA3083">
+      <End Role="Rol" EntitySet="Rols" />
+      <End Role="Usuario" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Venta__IdTipoDoc__74AE54BC" Association="SalesModel.Store.FK__Venta__IdTipoDoc__74AE54BC">
+      <End Role="TipoDocumentoVenta" EntitySet="TipoDocumentoVentas" />
+      <End Role="Venta" EntitySet="Ventas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Venta__IdUsuario__75A278F5" Association="SalesModel.Store.FK__Venta__IdUsuario__75A278F5">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Venta" EntitySet="Ventas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="EsActivo" Type="bit" Nullable="true" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Configuracions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Recurso" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Propiedad" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Valor" Type="varchar" Nullable="true" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="DetalleVentas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdVenta" Type="int" Nullable="true" />
+    <Property Name="IdProducto" Type="int" Nullable="true" />
+    <Property Name="MarcaProducto" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="DescripcionProducto" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="CategoriaProducto" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="Cantidad" Type="int" Nullable="true" />
+    <Property Name="Precio" Type="decimal" Nullable="true" Precision="10" Scale="2" />
+    <Property Name="Total" Type="decimal" Nullable="true" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Menus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="IdMenuPadre" Type="int" Nullable="true" />
+    <Property Name="Icono" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="Controlador" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="PaginaAccion" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="EsActivo" Type="bit" Nullable="true" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Negocios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UrlLogo" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="NombreLogo" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="NumeroDocumento" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Nombre" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Correo" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Direccion" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Telefono" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="PorcentajeImpuesto" Type="decimal" Nullable="true" Precision="10" Scale="2" />
+    <Property Name="SimboloMoneda" Type="varchar" Nullable="true" MaxLength="5" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NumeroCorrelativoes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UltimoNumero" Type="int" Nullable="true" />
+    <Property Name="CantidadDigitos" Type="int" Nullable="true" />
+    <Property Name="Gestion" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="FechaActualizacion" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Productoes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodigoBarra" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Marca" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="IdCategoria" Type="int" Nullable="true" />
+    <Property Name="Stock" Type="int" Nullable="true" />
+    <Property Name="UrlImagen" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="NombreImagen" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="Precio" Type="decimal" Nullable="true" Precision="10" Scale="2" />
+    <Property Name="EsActivo" Type="bit" Nullable="true" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rols">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="EsActivo" Type="bit" Nullable="true" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RolMenus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdRol" Type="int" Nullable="true" />
+    <Property Name="IdMenu" Type="int" Nullable="true" />
+    <Property Name="EsActivo" Type="bit" Nullable="true" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoDocumentoVentas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="EsActivo" Type="bit" Nullable="true" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Correo" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Telefono" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="IdRol" Type="int" Nullable="true" />
+    <Property Name="UrlFoto" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="NombreFoto" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="Clave" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="EsActivo" Type="bit" Nullable="true" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ventas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumeroVenta" Type="varchar" Nullable="true" MaxLength="6" />
+    <Property Name="IdTipoDocumentoVenta" Type="int" Nullable="true" />
+    <Property Name="IdUsuario" Type="int" Nullable="true" />
+    <Property Name="CocumentoCliente" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="NombreCliente" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="SubTotal" Type="decimal" Nullable="true" Precision="10" Scale="2" />
+    <Property Name="ImpuestoTotal" Type="decimal" Nullable="true" Precision="10" Scale="2" />
+    <Property Name="Total" Type="decimal" Nullable="true" Precision="10" Scale="2" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Producto__IdCate__70DDC3D8">
+    <End Role="Categoria" Type="SalesModel.Store.Categorias" Multiplicity="0..1" />
+    <End Role="Producto" Type="SalesModel.Store.Productoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleVe__IdVen__6EF57B66">
+    <End Role="Venta" Type="SalesModel.Store.Ventas" Multiplicity="0..1" />
+    <End Role="DetalleVenta" Type="SalesModel.Store.DetalleVentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venta">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="IdVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Menu__IdMenuPadr__6FE99F9F">
+    <End Role="Menu" Type="SalesModel.Store.Menus" Multiplicity="0..1" />
+    <End Role="Menu1" Type="SalesModel.Store.Menus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Menu1">
+        <PropertyRef Name="IdMenuPadre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RolMenu__IdMenu__71D1E811">
+    <End Role="Menu" Type="SalesModel.Store.Menus" Multiplicity="0..1" />
+    <End Role="RolMenu" Type="SalesModel.Store.RolMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolMenu">
+        <PropertyRef Name="IdMenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RolMenu__IdRol__72C60C4A">
+    <End Role="Rol" Type="SalesModel.Store.Rols" Multiplicity="0..1" />
+    <End Role="RolMenu" Type="SalesModel.Store.RolMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolMenu">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__IdRol__73BA3083">
+    <End Role="Rol" Type="SalesModel.Store.Rols" Multiplicity="0..1" />
+    <End Role="Usuario" Type="SalesModel.Store.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Venta__IdTipoDoc__74AE54BC">
+    <End Role="TipoDocumentoVenta" Type="SalesModel.Store.TipoDocumentoVentas" Multiplicity="0..1" />
+    <End Role="Venta" Type="SalesModel.Store.Ventas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoDocumentoVenta">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="IdTipoDocumentoVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Venta__IdUsuario__75A278F5">
+    <End Role="Usuario" Type="SalesModel.Store.Usuarios" Multiplicity="0..1" />
+    <End Role="Venta" Type="SalesModel.Store.Ventas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

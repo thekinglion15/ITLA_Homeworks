@@ -1,0 +1,935 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SalesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SalesModelStoreContainer">
+    <EntitySet Name="Categorias" EntityType="SalesModel.Store.Categorias" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Configuracions" EntityType="SalesModel.Store.Configuracions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DetalleVentas" EntityType="SalesModel.Store.DetalleVentas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Menus" EntityType="SalesModel.Store.Menus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Negocios" EntityType="SalesModel.Store.Negocios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NumeroCorrelativoes" EntityType="SalesModel.Store.NumeroCorrelativoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Productoes" EntityType="SalesModel.Store.Productoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Rols" EntityType="SalesModel.Store.Rols" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RolMenus" EntityType="SalesModel.Store.RolMenus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoDocumentoVentas" EntityType="SalesModel.Store.TipoDocumentoVentas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuarios" EntityType="SalesModel.Store.Usuarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ventas" EntityType="SalesModel.Store.Ventas" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__Producto__IdCate__70DDC3D8" Association="SalesModel.Store.FK__Producto__IdCate__70DDC3D8">
+      <End Role="Categoria" EntitySet="Categorias" />
+      <End Role="Producto" EntitySet="Productoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleVe__IdVen__6EF57B66" Association="SalesModel.Store.FK__DetalleVe__IdVen__6EF57B66">
+      <End Role="Venta" EntitySet="Ventas" />
+      <End Role="DetalleVenta" EntitySet="DetalleVentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Menu__IdMenuPadr__6FE99F9F" Association="SalesModel.Store.FK__Menu__IdMenuPadr__6FE99F9F">
+      <End Role="Menu" EntitySet="Menus" />
+      <End Role="Menu1" EntitySet="Menus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RolMenu__IdMenu__71D1E811" Association="SalesModel.Store.FK__RolMenu__IdMenu__71D1E811">
+      <End Role="Menu" EntitySet="Menus" />
+      <End Role="RolMenu" EntitySet="RolMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RolMenu__IdRol__72C60C4A" Association="SalesModel.Store.FK__RolMenu__IdRol__72C60C4A">
+      <End Role="Rol" EntitySet="Rols" />
+      <End Role="RolMenu" EntitySet="RolMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__IdRol__73BA3083" Association="SalesModel.Store.FK__Usuario__IdRol__73BA3083">
+      <End Role="Rol" EntitySet="Rols" />
+      <End Role="Usuario" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Venta__IdTipoDoc__74AE54BC" Association="SalesModel.Store.FK__Venta__IdTipoDoc__74AE54BC">
+      <End Role="TipoDocumentoVenta" EntitySet="TipoDocumentoVentas" />
+      <End Role="Venta" EntitySet="Ventas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Venta__IdUsuario__75A278F5" Association="SalesModel.Store.FK__Venta__IdUsuario__75A278F5">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Venta" EntitySet="Ventas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="EsActivo" Type="bit" Nullable="true" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Configuracions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Recurso" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Propiedad" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Valor" Type="varchar" Nullable="true" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="DetalleVentas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdVenta" Type="int" Nullable="true" />
+    <Property Name="IdProducto" Type="int" Nullable="true" />
+    <Property Name="MarcaProducto" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="DescripcionProducto" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="CategoriaProducto" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="Cantidad" Type="int" Nullable="true" />
+    <Property Name="Precio" Type="decimal" Nullable="true" Precision="10" Scale="2" />
+    <Property Name="Total" Type="decimal" Nullable="true" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Menus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="IdMenuPadre" Type="int" Nullable="true" />
+    <Property Name="Icono" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="Controlador" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="PaginaAccion" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="EsActivo" Type="bit" Nullable="true" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Negocios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UrlLogo" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="NombreLogo" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="NumeroDocumento" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Nombre" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Correo" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Direccion" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Telefono" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="PorcentajeImpuesto" Type="decimal" Nullable="true" Precision="10" Scale="2" />
+    <Property Name="SimboloMoneda" Type="varchar" Nullable="true" MaxLength="5" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NumeroCorrelativoes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UltimoNumero" Type="int" Nullable="true" />
+    <Property Name="CantidadDigitos" Type="int" Nullable="true" />
+    <Property Name="Gestion" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="FechaActualizacion" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Productoes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodigoBarra" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Marca" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="IdCategoria" Type="int" Nullable="true" />
+    <Property Name="Stock" Type="int" Nullable="true" />
+    <Property Name="UrlImagen" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="NombreImagen" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="Precio" Type="decimal" Nullable="true" Precision="10" Scale="2" />
+    <Property Name="EsActivo" Type="bit" Nullable="true" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rols">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="EsActivo" Type="bit" Nullable="true" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RolMenus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdRol" Type="int" Nullable="true" />
+    <Property Name="IdMenu" Type="int" Nullable="true" />
+    <Property Name="EsActivo" Type="bit" Nullable="true" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoDocumentoVentas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="EsActivo" Type="bit" Nullable="true" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Correo" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Telefono" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="IdRol" Type="int" Nullable="true" />
+    <Property Name="UrlFoto" Type="varchar" Nullable="true" MaxLength="500" />
+    <Property Name="NombreFoto" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="Clave" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="EsActivo" Type="bit" Nullable="true" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+    <Property Name="FechaMod" Type="datetime" Nullable="true" />
+    <Property Name="IdUsuarioMod" Type="int" Nullable="true" />
+    <Property Name="IdUsuarioElimino" Type="int" Nullable="true" />
+    <Property Name="FechaElimino" Type="datetime" Nullable="true" />
+    <Property Name="Eliminado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ventas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumeroVenta" Type="varchar" Nullable="true" MaxLength="6" />
+    <Property Name="IdTipoDocumentoVenta" Type="int" Nullable="true" />
+    <Property Name="IdUsuario" Type="int" Nullable="true" />
+    <Property Name="CocumentoCliente" Type="varchar" Nullable="true" MaxLength="10" />
+    <Property Name="NombreCliente" Type="varchar" Nullable="true" MaxLength="20" />
+    <Property Name="SubTotal" Type="decimal" Nullable="true" Precision="10" Scale="2" />
+    <Property Name="ImpuestoTotal" Type="decimal" Nullable="true" Precision="10" Scale="2" />
+    <Property Name="Total" Type="decimal" Nullable="true" Precision="10" Scale="2" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="IdUsuarioCreacion" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Producto__IdCate__70DDC3D8">
+    <End Role="Categoria" Type="SalesModel.Store.Categorias" Multiplicity="0..1" />
+    <End Role="Producto" Type="SalesModel.Store.Productoes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleVe__IdVen__6EF57B66">
+    <End Role="Venta" Type="SalesModel.Store.Ventas" Multiplicity="0..1" />
+    <End Role="DetalleVenta" Type="SalesModel.Store.DetalleVentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venta">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="IdVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Menu__IdMenuPadr__6FE99F9F">
+    <End Role="Menu" Type="SalesModel.Store.Menus" Multiplicity="0..1" />
+    <End Role="Menu1" Type="SalesModel.Store.Menus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Menu1">
+        <PropertyRef Name="IdMenuPadre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RolMenu__IdMenu__71D1E811">
+    <End Role="Menu" Type="SalesModel.Store.Menus" Multiplicity="0..1" />
+    <End Role="RolMenu" Type="SalesModel.Store.RolMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolMenu">
+        <PropertyRef Name="IdMenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RolMenu__IdRol__72C60C4A">
+    <End Role="Rol" Type="SalesModel.Store.Rols" Multiplicity="0..1" />
+    <End Role="RolMenu" Type="SalesModel.Store.RolMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RolMenu">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__IdRol__73BA3083">
+    <End Role="Rol" Type="SalesModel.Store.Rols" Multiplicity="0..1" />
+    <End Role="Usuario" Type="SalesModel.Store.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="IdRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Venta__IdTipoDoc__74AE54BC">
+    <End Role="TipoDocumentoVenta" Type="SalesModel.Store.TipoDocumentoVentas" Multiplicity="0..1" />
+    <End Role="Venta" Type="SalesModel.Store.Ventas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoDocumentoVenta">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="IdTipoDocumentoVenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Venta__IdUsuario__75A278F5">
+    <End Role="Usuario" Type="SalesModel.Store.Usuarios" Multiplicity="0..1" />
+    <End Role="Venta" Type="SalesModel.Store.Ventas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Venta">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SalesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuarioMod" Type="Int32" />
+          <Property Name="IdUsuarioElimino" Type="Int32" />
+          <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Productoes" Relationship="Self.FK__Producto__IdCate__70DDC3D8" FromRole="Categoria" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Configuracion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Recurso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Propiedad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DetalleVenta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdVenta" Type="Int32" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="MarcaProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DescripcionProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CategoriaProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Total" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__DetalleVe__IdVen__6EF57B66" FromRole="DetalleVenta" ToRole="Venta" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IdMenuPadre" Type="Int32" />
+          <Property Name="Icono" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Controlador" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PaginaAccion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuarioMod" Type="Int32" />
+          <Property Name="IdUsuarioElimino" Type="Int32" />
+          <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Menu1" Relationship="Self.FK__Menu__IdMenuPadr__6FE99F9F" FromRole="Menu" ToRole="Menu1" />
+          <NavigationProperty Name="Menu2" Relationship="Self.FK__Menu__IdMenuPadr__6FE99F9F" FromRole="Menu1" ToRole="Menu" />
+          <NavigationProperty Name="RolMenus" Relationship="Self.FK__RolMenu__IdMenu__71D1E811" FromRole="Menu" ToRole="RolMenu" />
+        </EntityType>
+        <EntityType Name="Negocio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrlLogo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NombreLogo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PorcentajeImpuesto" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="SimboloMoneda" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuarioMod" Type="Int32" />
+          <Property Name="IdUsuarioElimino" Type="Int32" />
+          <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NumeroCorrelativo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UltimoNumero" Type="Int32" />
+          <Property Name="CantidadDigitos" Type="Int32" />
+          <Property Name="Gestion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoBarra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdCategoria" Type="Int32" />
+          <Property Name="Stock" Type="Int32" />
+          <Property Name="UrlImagen" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NombreImagen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="EsActivo" Type="Boolean" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuarioMod" Type="Int32" />
+          <Property Name="IdUsuarioElimino" Type="Int32" />
+          <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK__Producto__IdCate__70DDC3D8" FromRole="Producto" ToRole="Categoria" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuarioMod" Type="Int32" />
+          <Property Name="IdUsuarioElimino" Type="Int32" />
+          <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="RolMenus" Relationship="Self.FK__RolMenu__IdRol__72C60C4A" FromRole="Rol" ToRole="RolMenu" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuario__IdRol__73BA3083" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="RolMenu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRol" Type="Int32" />
+          <Property Name="IdMenu" Type="Int32" />
+          <Property Name="EsActivo" Type="Boolean" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuarioMod" Type="Int32" />
+          <Property Name="IdUsuarioElimino" Type="Int32" />
+          <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK__RolMenu__IdMenu__71D1E811" FromRole="RolMenu" ToRole="Menu" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK__RolMenu__IdRol__72C60C4A" FromRole="RolMenu" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="TipoDocumentoVenta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuarioMod" Type="Int32" />
+          <Property Name="IdUsuarioElimino" Type="Int32" />
+          <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Ventas" Relationship="Self.FK__Venta__IdTipoDoc__74AE54BC" FromRole="TipoDocumentoVenta" ToRole="Venta" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdRol" Type="Int32" />
+          <Property Name="UrlFoto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="NombreFoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Clave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+          <Property Name="FechaMod" Type="DateTime" Precision="3" />
+          <Property Name="IdUsuarioMod" Type="Int32" />
+          <Property Name="IdUsuarioElimino" Type="Int32" />
+          <Property Name="FechaElimino" Type="DateTime" Precision="3" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK__Usuario__IdRol__73BA3083" FromRole="Usuario" ToRole="Rol" />
+          <NavigationProperty Name="Ventas" Relationship="Self.FK__Venta__IdUsuario__75A278F5" FromRole="Usuario" ToRole="Venta" />
+        </EntityType>
+        <EntityType Name="Venta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroVenta" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipoDocumentoVenta" Type="Int32" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="CocumentoCliente" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NombreCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SubTotal" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ImpuestoTotal" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Total" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdUsuarioCreacion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DetalleVentas" Relationship="Self.FK__DetalleVe__IdVen__6EF57B66" FromRole="Venta" ToRole="DetalleVenta" />
+          <NavigationProperty Name="TipoDocumentoVenta" Relationship="Self.FK__Venta__IdTipoDoc__74AE54BC" FromRole="Venta" ToRole="TipoDocumentoVenta" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Venta__IdUsuario__75A278F5" FromRole="Venta" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK__Producto__IdCate__70DDC3D8">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleVe__IdVen__6EF57B66">
+          <End Role="Venta" Type="Self.Venta" Multiplicity="0..1" />
+          <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleVenta">
+              <PropertyRef Name="IdVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menu__IdMenuPadr__6FE99F9F">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Menu1" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="IdMenuPadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolMenu__IdMenu__71D1E811">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="RolMenu" Type="Self.RolMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolMenu">
+              <PropertyRef Name="IdMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolMenu__IdRol__72C60C4A">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="RolMenu" Type="Self.RolMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolMenu">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__IdRol__73BA3083">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Venta__IdTipoDoc__74AE54BC">
+          <End Role="TipoDocumentoVenta" Type="Self.TipoDocumentoVenta" Multiplicity="0..1" />
+          <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDocumentoVenta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Venta">
+              <PropertyRef Name="IdTipoDocumentoVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Venta__IdUsuario__75A278F5">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Venta">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SalesModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+          <EntitySet Name="Configuracions" EntityType="Self.Configuracion" />
+          <EntitySet Name="DetalleVentas" EntityType="Self.DetalleVenta" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="Negocios" EntityType="Self.Negocio" />
+          <EntitySet Name="NumeroCorrelativoes" EntityType="Self.NumeroCorrelativo" />
+          <EntitySet Name="Productoes" EntityType="Self.Producto" />
+          <EntitySet Name="Rols" EntityType="Self.Rol" />
+          <EntitySet Name="RolMenus" EntityType="Self.RolMenu" />
+          <EntitySet Name="TipoDocumentoVentas" EntityType="Self.TipoDocumentoVenta" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <EntitySet Name="Ventas" EntityType="Self.Venta" />
+          <AssociationSet Name="FK__Producto__IdCate__70DDC3D8" Association="Self.FK__Producto__IdCate__70DDC3D8">
+            <End Role="Categoria" EntitySet="Categorias" />
+            <End Role="Producto" EntitySet="Productoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleVe__IdVen__6EF57B66" Association="Self.FK__DetalleVe__IdVen__6EF57B66">
+            <End Role="Venta" EntitySet="Ventas" />
+            <End Role="DetalleVenta" EntitySet="DetalleVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menu__IdMenuPadr__6FE99F9F" Association="Self.FK__Menu__IdMenuPadr__6FE99F9F">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="Menu1" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolMenu__IdMenu__71D1E811" Association="Self.FK__RolMenu__IdMenu__71D1E811">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="RolMenu" EntitySet="RolMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolMenu__IdRol__72C60C4A" Association="Self.FK__RolMenu__IdRol__72C60C4A">
+            <End Role="Rol" EntitySet="Rols" />
+            <End Role="RolMenu" EntitySet="RolMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__IdRol__73BA3083" Association="Self.FK__Usuario__IdRol__73BA3083">
+            <End Role="Rol" EntitySet="Rols" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Venta__IdTipoDoc__74AE54BC" Association="Self.FK__Venta__IdTipoDoc__74AE54BC">
+            <End Role="TipoDocumentoVenta" EntitySet="TipoDocumentoVentas" />
+            <End Role="Venta" EntitySet="Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Venta__IdUsuario__75A278F5" Association="Self.FK__Venta__IdUsuario__75A278F5">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Venta" EntitySet="Ventas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SalesModelStoreContainer" CdmEntityContainer="SalesModelContainer">
+    <EntitySetMapping Name="Categorias">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Categoria)">
+        <MappingFragment StoreEntitySet="Categorias">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Configuracions">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Configuracion)">
+        <MappingFragment StoreEntitySet="Configuracions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Recurso" ColumnName="Recurso" />
+          <ScalarProperty Name="Propiedad" ColumnName="Propiedad" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleVentas">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.DetalleVenta)">
+        <MappingFragment StoreEntitySet="DetalleVentas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="MarcaProducto" ColumnName="MarcaProducto" />
+          <ScalarProperty Name="DescripcionProducto" ColumnName="DescripcionProducto" />
+          <ScalarProperty Name="CategoriaProducto" ColumnName="CategoriaProducto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Menu)">
+        <MappingFragment StoreEntitySet="Menus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdMenuPadre" ColumnName="IdMenuPadre" />
+          <ScalarProperty Name="Icono" ColumnName="Icono" />
+          <ScalarProperty Name="Controlador" ColumnName="Controlador" />
+          <ScalarProperty Name="PaginaAccion" ColumnName="PaginaAccion" />
+          <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Negocios">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Negocio)">
+        <MappingFragment StoreEntitySet="Negocios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UrlLogo" ColumnName="UrlLogo" />
+          <ScalarProperty Name="NombreLogo" ColumnName="NombreLogo" />
+          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="PorcentajeImpuesto" ColumnName="PorcentajeImpuesto" />
+          <ScalarProperty Name="SimboloMoneda" ColumnName="SimboloMoneda" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NumeroCorrelativoes">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.NumeroCorrelativo)">
+        <MappingFragment StoreEntitySet="NumeroCorrelativoes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UltimoNumero" ColumnName="UltimoNumero" />
+          <ScalarProperty Name="CantidadDigitos" ColumnName="CantidadDigitos" />
+          <ScalarProperty Name="Gestion" ColumnName="Gestion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productoes">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Producto)">
+        <MappingFragment StoreEntitySet="Productoes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="UrlImagen" ColumnName="UrlImagen" />
+          <ScalarProperty Name="NombreImagen" ColumnName="NombreImagen" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rols">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Rol)">
+        <MappingFragment StoreEntitySet="Rols">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolMenus">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.RolMenu)">
+        <MappingFragment StoreEntitySet="RolMenus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+          <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoDocumentoVentas">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.TipoDocumentoVenta)">
+        <MappingFragment StoreEntitySet="TipoDocumentoVentas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Usuario)">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="UrlFoto" ColumnName="UrlFoto" />
+          <ScalarProperty Name="NombreFoto" ColumnName="NombreFoto" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+          <ScalarProperty Name="FechaMod" ColumnName="FechaMod" />
+          <ScalarProperty Name="IdUsuarioMod" ColumnName="IdUsuarioMod" />
+          <ScalarProperty Name="IdUsuarioElimino" ColumnName="IdUsuarioElimino" />
+          <ScalarProperty Name="FechaElimino" ColumnName="FechaElimino" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ventas">
+      <EntityTypeMapping TypeName="IsTypeOf(SalesModel.Venta)">
+        <MappingFragment StoreEntitySet="Ventas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NumeroVenta" ColumnName="NumeroVenta" />
+          <ScalarProperty Name="IdTipoDocumentoVenta" ColumnName="IdTipoDocumentoVenta" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="CocumentoCliente" ColumnName="CocumentoCliente" />
+          <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="ImpuestoTotal" ColumnName="ImpuestoTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="IdUsuarioCreacion" ColumnName="IdUsuarioCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="DefaultDatabaseSchema" Value="dbo" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
